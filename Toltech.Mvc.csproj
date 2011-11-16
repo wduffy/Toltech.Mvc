@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F91795F5-C2AF-44C9-B7AD-C12D40A74CE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Toltech.Mvc</RootNamespace>
+    <AssemblyName>Toltech.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Country.cs" />
+    <Compile Include="Extensions\System.Collections.Generic\IList.cs" />
+    <Compile Include="Extensions\System.Collections.Generic\IEnumerable.cs" />
+    <Compile Include="Extensions\System.Collections\IList.cs" />
+    <Compile Include="Extensions\System.ComponentModel.DataAnnotations\Class1.cs" />
+    <Compile Include="Extensions\System.ComponentModel.DataAnnotations\EmailAttribute.cs" />
+    <Compile Include="Extensions\System.ComponentModel.DataAnnotations\StringRangeAttribute.cs" />
+    <Compile Include="Extensions\System.IO\StreamExtensions.cs" />
+    <Compile Include="Extensions\System.Linq.Expressions\ExpressionExtensions.cs" />
+    <Compile Include="Extensions\System.Linq\PagedListExtensions.cs" />
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\ActionLinkImage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\ActionLinkSelected.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\CheckBoxList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\Email.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\Flash.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\Id.cs" />
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\Image.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\ImageRandom.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\Pager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\PagerStats.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\Upload.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\UploadFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\UploadImage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\System.Web.Mvc\CheckValues.cs" />
+    <Compile Include="Extensions\System.Web.Mvc\CsvResult.cs" />
+    <Compile Include="Extensions\System.Web.Mvc\Flash.cs" />
+    <Compile Include="Extensions\System.Web.Mvc\IsRootActionConstraint.cs" />
+    <Compile Include="Tools\AutoMapper\IAutoMapperRegistrationResolver.cs" />
+    <Compile Include="Tools\AutoMapper\IAutoMapperRegistrar.cs" />
+    <Compile Include="Tools\AutoMapper\AutoMapperRegistration.cs" />
+    <Compile Include="Tools\Data\CsvBuilder.cs" />
+    <Compile Include="Tools\Data\ObjectToCsvExporter.cs" />
+    <Compile Include="Tools\System.Collections.Generic\PagedList.cs" />
+    <Compile Include="Extensions\System.Web.Mvc\UrlHelperExtensions.cs" />
+    <Compile Include="Extensions\System.Web\NameValueCollectionExtensions.cs" />
+    <Compile Include="Extensions\System\BooleanExtensions.cs" />
+    <Compile Include="Extensions\System\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\System\ExceptionExtensions.cs" />
+    <Compile Include="Extensions\System\StringExtensions.cs" />
+    <Compile Include="Inflector.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sorter.cs" />
+    <Compile Include="Tools\EncodingTools.cs" />
+    <Compile Include="Tools\EncryptionTools.cs" />
+    <Compile Include="Tools\EnumTools.cs" />
+    <Compile Include="Tools\IO\ImageTools.cs" />
+    <Compile Include="Tools\IO\PathTools.cs" />
+    <Compile Include="Tools\Mail\FormMail\EmailType.cs" />
+    <Compile Include="Tools\Mail\FormMail\FormMail.cs" />
+    <Compile Include="Tools\Mail\FormMail\FormMailItemType.cs" />
+    <Compile Include="Tools\Mail\FormMail\FormMailStringItem.cs" />
+    <Compile Include="Tools\Mail\FormMail\IFormMailControl.cs" />
+    <Compile Include="Tools\Mail\FormMail\IFormMailItem.cs" />
+    <Compile Include="Tools\Data\Xml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tools\Xml\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
