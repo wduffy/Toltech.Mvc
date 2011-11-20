@@ -1,11 +1,12 @@
 ﻿using System.Collections.Specialized;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace System
 {
     public static class StringExtensions
     {
-
+        
         /// <summary>
         /// Returns an extract of the current string, also strips any HTML if found
         /// </summary>
@@ -70,10 +71,7 @@ namespace System
         /// <remarks></remarks>
         public static string Assured(this string s, string value)
         {
-            if (string.IsNullOrEmpty(value.Trim()))
-                throw new ArgumentException("Value cannot be null or empty", "value");
-
-            return string.IsNullOrEmpty(s.Trim()) ? value : s;
+            return string.IsNullOrWhiteSpace(s) ? value : s;
         }
 
         /// <summary>
@@ -84,6 +82,23 @@ namespace System
         public static string ToSafePath(this string s)
         {
             return Regex.Replace(s, "[^\\w_-]+", "-", RegexOptions.IgnoreCase).ToLower();
+        }
+
+        /// <summary>
+        /// Returns a string array that contains the substrings in this instance that are delimited and trimmed by elements of a specified Unicode character array.
+        /// </summary>
+        /// <param name="separator">A characters that delimit the substrings in this instance.</param>
+        /// <param name="trim">An array of Unicode characters that are trimmed off the substrings in this instance, an empty array that contains no delimiters, or null.</param>
+        /// <returns>A safe path string</returns>
+        /// <remarks>Replaces any non friendly characters with a -</remarks>
+        public static string[] SplitAndTrim(this string s, char separator, params char[] trim)
+        {
+            var output = new List<string>();
+
+            foreach (var value in s.Split(separator))
+                output.Add(value.Trim(trim));
+
+            return output.ToArray();
         }
 
         /// <summary>
@@ -116,7 +131,7 @@ namespace System
             "orgasm", "offshore", 
             "penis", "pussy", "pharmacy", "phentermine", "poker", "pre approved", "porn", "porno", "panties",
             "refinance",
-            "stock", "soma", "sex", "sexy", "sperm",
+            "seo", "sex", "sexy", "soma", "sperm", "stock",
             "tits", "texas holdem", "teen", "teens",
             "unclaimed",
             "viagra", "valium", "vioxx", "vagina",
