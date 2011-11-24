@@ -17,10 +17,10 @@ namespace System.Web.Mvc.Html
 
         public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedList list, int maximumNumericLinks)
         {
-            return htmlHelper.Pager(list, maximumNumericLinks, "prevNextLink", "prevNextLinkDisabled", "pagerNumberLink", "pagerNumberLinkSelected");
+            return htmlHelper.Pager(list, maximumNumericLinks, "pagerPreviousLink", "pagerNextLink", "disabled", "pagerNumberLink", "current");
         }
 
-        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedList list, int maximumNumericLinks, string prevNextLinkClass, string prevNextLinkDisabledClass, string pagingNumberClass, string pagingNumberSelectedClass)
+        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedList list, int maximumNumericLinks, string pagerPreviousClass, string pagerNextClass, string pagerDisabledClass, string pagingNumberClass, string pagingNumberCurrentClass)
         {
             if (maximumNumericLinks % 2 != 1)
                 throw new ArgumentException("Value must be an odd number.", "maximumNumericLinks");
@@ -30,20 +30,15 @@ namespace System.Web.Mvc.Html
             #region Previous Link
 
             var prev = new TagBuilder("div");
-            prev.MergeAttribute("style", "float: left; width: 15%; text-align: left;");
+            prev.AddCssClass("pagerPreviousHolder");
 
             var prevLink = new TagBuilder("a");
             prevLink.SetInnerText("<< Prev");
-            prevLink.AddCssClass("pagerLink");
             if (list.Page > 1)
-            {
-                prevLink.AddCssClass(prevNextLinkClass);
                 prevLink.MergeAttribute("href", url.StateUrl(new { page = list.Page - 1 }));
-            }
             else
-            {
-                prevLink.AddCssClass(prevNextLinkDisabledClass);
-            }
+                prevLink.AddCssClass(pagerDisabledClass);
+            prevLink.AddCssClass(pagerPreviousClass);
 
             prev.InnerHtml = prevLink.ToString(TagRenderMode.Normal);
 
@@ -51,9 +46,9 @@ namespace System.Web.Mvc.Html
             #region Numeric Links
 
             var numerics = new TagBuilder("div");
-            numerics.MergeAttribute("style", "float: left; width: 70%; text-align: center;");
+            numerics.AddCssClass("pagerNumberHolder");
 
-            if (list.TotalPages > 1)
+            if (list.TotalPages > 0)
             {
 
                 int pagingStartNumber = -1;
@@ -74,46 +69,42 @@ namespace System.Web.Mvc.Html
                     pagingEndNumber = list.TotalPages;
                 }
 
-                for (int i = pagingStartNumber; i <= pagingEndNumber; i++)
+                //for (int i = pagingStartNumber; i <= pagingEndNumber; i++)
+                for (int i = pagingEndNumber; i >= pagingStartNumber; i--)
                 {
                     var numberTag = new TagBuilder("a");
-                    numberTag.AddCssClass("pagerLink");
                     numberTag.SetInnerText(i.ToString());
                     numberTag.MergeAttribute("href", url.StateUrl(new { page = i }));
-                    numberTag.AddCssClass(i == (list.Page) ? pagingNumberSelectedClass : pagingNumberClass);
+                    if (i == list.Page) numberTag.AddCssClass(pagingNumberCurrentClass);
+                    numberTag.AddCssClass(pagingNumberClass);                    
                     numerics.InnerHtml = numerics.InnerHtml + numberTag.ToString();
                 }
 
             }
             else
             {
-                numerics.InnerHtml = "&nbsp;"; // Stops div colapsing
+                //numerics.InnerHtml = "&nbsp;"; // Stops div colapsing
             }
 
             #endregion
             #region Next Link
 
             var next = new TagBuilder("div");
-            next.MergeAttribute("style", "float: left; width: 15%; text-align: right;");
+            next.AddCssClass("pagerNextHolder");
 
             var nextLink = new TagBuilder("a");
             nextLink.SetInnerText("Next >>");
-            nextLink.AddCssClass("pagerLink");
             if (list.Page < list.TotalPages)
-            {
-                nextLink.AddCssClass(prevNextLinkClass);
                 nextLink.MergeAttribute("href", url.StateUrl(new { page = list.Page + 1 }));
-            }
             else
-            {
-                nextLink.AddCssClass(prevNextLinkDisabledClass);
-            }
+                nextLink.AddCssClass(pagerDisabledClass);
+            nextLink.AddCssClass(pagerNextClass);
 
             next.InnerHtml = nextLink.ToString();
 
             #endregion
             
-            return MvcHtmlString.Create(string.Format("{1}{0}{2}{0}{3}", Environment.NewLine, prev, numerics, next));
+            return MvcHtmlString.Create(string.Format("<div class=\"pagerHolder\">{0}{3}{0}{2}{0}{1}</div>", Environment.NewLine, prev, numerics, next));
         }
 
     }
