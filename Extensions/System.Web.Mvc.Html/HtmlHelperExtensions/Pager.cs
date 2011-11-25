@@ -74,8 +74,10 @@ namespace System.Web.Mvc.Html
                 {
                     var numberTag = new TagBuilder("a");
                     numberTag.SetInnerText(i.ToString());
-                    numberTag.MergeAttribute("href", url.StateUrl(new { page = i }));
-                    if (i == list.Page) numberTag.AddCssClass(pagingNumberCurrentClass);
+                    if (i == list.Page) 
+                        numberTag.AddCssClass(pagingNumberCurrentClass);
+                    else
+                        numberTag.MergeAttribute("href", url.StateUrl(new { page = i }));
                     numberTag.AddCssClass(pagingNumberClass);                    
                     numerics.InnerHtml = numerics.InnerHtml + numberTag.ToString();
                 }

@@ -30,7 +30,10 @@ namespace System.Web.Mvc
 
             foreach (var kvp in routeValues)
                 v[kvp.Key] = kvp.Value;
-            
+
+            // Remove the timestamp key if it exists
+            v.Remove("timestamp");
+
             return helper.RouteUrl(v);
         }
 
