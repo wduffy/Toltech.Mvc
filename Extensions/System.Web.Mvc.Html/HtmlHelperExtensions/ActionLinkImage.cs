@@ -44,8 +44,10 @@ namespace System.Web.Mvc.Html
         public static MvcHtmlString ActionLinkImage(this HtmlHelper htmlHelper, string imageLocation, string altTag, string actionName, string controllerName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
         {
             var urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext, htmlHelper.RouteCollection);
+
             var link = new TagBuilder("a");
             link.MergeAttribute("href", urlHelper.Action(actionName, controllerName, routeValues));
+            link.MergeAttribute("target", (string)htmlAttributes["target"]); htmlAttributes.Remove("target");
             link.InnerHtml = htmlHelper.Image(imageLocation, altTag, htmlAttributes).ToString();
 
             return MvcHtmlString.Create(link.ToString(TagRenderMode.Normal));

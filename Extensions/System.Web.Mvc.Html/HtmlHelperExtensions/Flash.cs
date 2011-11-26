@@ -10,11 +10,24 @@ namespace System.Web.Mvc.Html
             var flash = (Flash)helper.ViewContext.ViewData["Flash"] ?? (Flash)helper.ViewContext.TempData["Flash"];
 
             if (flash == null)
-                return MvcHtmlString.Empty; // string.Empty;
+                return MvcHtmlString.Empty;
 
+            return GetFlashMessage(flash.Priority, flash.Message);
+        }
+
+        public static MvcHtmlString Flash(this HtmlHelper helper, bool show, FlashPriority priority, string message)
+        {
+            if (!show)
+                return MvcHtmlString.Empty;
+
+            return GetFlashMessage(priority, message);
+        }
+
+        private static MvcHtmlString GetFlashMessage(FlashPriority priority, string message)
+        {
             var div = new TagBuilder("div");
-            
-            switch (flash.Priority)
+
+            switch (priority)
             {
                 case FlashPriority.General:
                     div.AddCssClass("flash-general");
@@ -27,7 +40,7 @@ namespace System.Web.Mvc.Html
                     break;
             }
 
-            div.SetInnerText(flash.Message);
+            div.SetInnerText(message);
             return MvcHtmlString.Create(div.ToString());
         }
 
