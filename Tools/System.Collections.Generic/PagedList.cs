@@ -3,7 +3,7 @@
 namespace System.Collections.Generic
 {
 
-    public interface IPagedList : IList
+    public interface IPagedEnumerable : IEnumerable
     {
         int Page { get; }
         int PageSize { get; }
@@ -11,11 +11,11 @@ namespace System.Collections.Generic
         int TotalPages { get; }
     }
 
-    public interface IPagedList<T> : IPagedList, IList<T>
+    public interface IPagedEnumerable<T> : IPagedEnumerable, IEnumerable<T>
     {
     }
 
-    public class PagedList<T> : List<T>, IPagedList<T>
+    public class PagedList<T> : List<T>, IPagedEnumerable<T>
     {
 
         public int Page { get; internal set; }

@@ -9,12 +9,12 @@ namespace System.Web.Mvc.Html
     public partial class HtmlHelperExtensions
     {
 
-        public static MvcHtmlString PagerStats(this HtmlHelper htmlHelper, IPagedList list)
+        public static MvcHtmlString PagerStats(this HtmlHelper htmlHelper, IPagedEnumerable list)
         {
             return htmlHelper.PagerStats(list, "record");
         }
 
-        public static MvcHtmlString PagerStats(this HtmlHelper htmlHelper, IPagedList list, string singular)
+        public static MvcHtmlString PagerStats(this HtmlHelper htmlHelper, IPagedEnumerable list, string singular)
         {
             var plural = Inflector.Pluralize(singular);
             var output = string.Empty;

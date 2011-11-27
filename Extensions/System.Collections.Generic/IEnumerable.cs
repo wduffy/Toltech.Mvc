@@ -6,6 +6,16 @@ namespace System.Collections.Generic
     {
 
         /// <summary>
+        /// Checks if the source contains an element that matches the query
+        /// </summary>
+        /// <returns>A boolean value indicating if the source contains an element that matched the query</returns>
+        /// <remarks></remarks>
+        public static bool IsEmpty<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        {
+            return source == null ? true : !source.Any();
+        }
+
+        /// <summary>
         /// Checks if the source is empty
         /// </summary>
         /// <returns>A boolean value indicating the if the source is empty</returns>

@@ -10,17 +10,17 @@ namespace System.Web.Mvc.Html
     public partial class HtmlHelperExtensions
     {
 
-        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedList list)
+        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedEnumerable list)
         {
             return htmlHelper.Pager(list, 9);
         }
 
-        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedList list, int maximumNumericLinks)
+        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedEnumerable list, int maximumNumericLinks)
         {
             return htmlHelper.Pager(list, maximumNumericLinks, "pagerPreviousLink", "pagerNextLink", "disabled", "pagerNumberLink", "current");
         }
 
-        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedList list, int maximumNumericLinks, string pagerPreviousClass, string pagerNextClass, string pagerDisabledClass, string pagingNumberClass, string pagingNumberCurrentClass)
+        public static MvcHtmlString Pager(this HtmlHelper htmlHelper, IPagedEnumerable list, int maximumNumericLinks, string pagerPreviousClass, string pagerNextClass, string pagerDisabledClass, string pagingNumberClass, string pagingNumberCurrentClass)
         {
             if (maximumNumericLinks % 2 != 1)
                 throw new ArgumentException("Value must be an odd number.", "maximumNumericLinks");
