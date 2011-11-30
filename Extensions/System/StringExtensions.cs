@@ -24,7 +24,21 @@ namespace System
         }
 
         /// <summary>
-        /// Assesses the current string and returns it's value with all HTML markup removed
+        /// Assesses the current string and return its value with all values removed
+        /// </summary>
+        /// <param name="values">An array of regular expressions that are to be executed against the current string with the results removed</param>
+        /// <returns>A string that is guaranteed to have none of the values supplied</returns>
+        /// <remarks></remarks>
+        public static string Remove(this string s, params string[] values)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return string.Empty;
+
+            return Regex.Replace(s, string.Join("|", values), string.Empty, RegexOptions.IgnoreCase);
+        }
+
+        /// <summary>
+        /// Assesses the current string and returns its value with all HTML markup removed
         /// </summary>
         /// <returns>A string that is guaranteed to have no HTML markup</returns>
         /// <remarks></remarks>
@@ -34,7 +48,7 @@ namespace System
         }
 
         /// <summary>
-        /// Assesses the current string and returns it's value with all HTML markup removed
+        /// Assesses the current string and returns its value with all HTML markup removed
         /// </summary>
         /// <returns>A string that is guaranteed to have no HTML markup</returns>
         /// <remarks></remarks>
