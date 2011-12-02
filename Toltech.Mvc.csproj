@@ -52,7 +52,8 @@
     <Compile Include="Extensions\System.Collections.Generic\IList.cs" />
     <Compile Include="Extensions\System.Collections.Generic\IEnumerable.cs" />
     <Compile Include="Extensions\System.Collections\IList.cs" />
-    <Compile Include="Extensions\System.ComponentModel.DataAnnotations\Class1.cs" />
+    <Compile Include="Extensions\System.ComponentModel.DataAnnotations\ImageAttribute.cs" />
+    <Compile Include="Extensions\System.ComponentModel.DataAnnotations\WithAttribute.cs" />
     <Compile Include="Extensions\System.ComponentModel.DataAnnotations\EmailAttribute.cs" />
     <Compile Include="Extensions\System.ComponentModel.DataAnnotations\StringRangeAttribute.cs" />
     <Compile Include="Extensions\System.IO\StreamExtensions.cs" />
