@@ -18,6 +18,9 @@ namespace System.Web.Mvc
             if (value == null)
                 return default(T);
 
+            if (typeof(T) == typeof(string) && value.RawValue.GetType().IsArray) // For string arrays, if the type request is string, flatten it
+                value = new ValueProviderResult(string.Join(", ", value.RawValue as string[]), value.AttemptedValue, value.Culture);
+                    
             return (T)value.ConvertTo(typeof(T));
         }
 

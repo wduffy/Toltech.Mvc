@@ -100,7 +100,9 @@
     <Compile Include="Extensions\System.Web.Mvc\CsvResult.cs" />
     <Compile Include="Extensions\System.Web.Mvc\Flash.cs" />
     <Compile Include="Extensions\System.Web.Mvc\IsRootActionConstraint.cs" />
-    <Compile Include="Extensions\System.Web.Mvc\ModelBindingContextExtensions.cs" />
+    <Compile Include="Extensions\System.Web.Mvc\ModelBindingContextExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Extensions\System\SortOrderEnum.cs" />
     <Compile Include="Tools\AutoMapper\IAutoMapperRegistrationResolver.cs" />
     <Compile Include="Tools\AutoMapper\IAutoMapperRegistrar.cs" />
