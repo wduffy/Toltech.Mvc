@@ -25,7 +25,7 @@ namespace System.Web.Mvc
         public MvcHtmlString Render()
         {
             var container = new TagBuilder("div");
-            container.AddCssClass("flash");
+            container.AddCssClass("flash-holder");
 
             if (!string.IsNullOrWhiteSpace(Message))
             {

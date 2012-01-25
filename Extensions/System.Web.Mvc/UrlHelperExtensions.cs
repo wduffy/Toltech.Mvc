@@ -32,7 +32,7 @@ namespace System.Web.Mvc
                 v[kvp.Key] = kvp.Value;
 
             // Remove the timestamp key if it exists
-            v.Remove("timestamp");
+            v.Remove("_");
 
             return helper.RouteUrl(v);
         }
