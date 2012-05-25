@@ -20,7 +20,7 @@ namespace System.Web.Mvc
         {
             context.HttpContext.Response.Clear();
             context.HttpContext.Response.ContentType = "text/csv";
-            context.HttpContext.Response.AppendHeader("Content-Disposition", string.Format("attachment; filename=\"{0} ({1:yyyy-MM-dd}).csv \"", _builder.Filename, DateTime.Now));
+            context.HttpContext.Response.AppendHeader("Content-Disposition", string.Format("attachment; filename=\"{0} ({1:yyyy-MM-dd}).csv\"", _builder.Filename, DateTime.Now));
             context.HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
 
             _builder.Build(context.HttpContext.Response.OutputStream);
