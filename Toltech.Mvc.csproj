@@ -68,6 +68,7 @@
     <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\CheckBoxList.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\CountryDropDownList.cs" />
     <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\Email.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -346,7 +346,7 @@ namespace Toltech.Mvc
             set { _isoCurrencyNumber = value; }
         }
 
-        internal static string[,] GetAllCountries()
+        public static string[,] GetAllCountries()
         {
             return Countries;
         }
