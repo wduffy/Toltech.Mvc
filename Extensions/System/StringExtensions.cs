@@ -61,10 +61,10 @@ namespace System
         /// Returns a boolean indicating if the current string matches the format of a valid address address
         /// </summary>
         /// <returns>A boolean value indicating if the current string matches the format of a valid address address</returns>
-        /// <remarks></remarks>
+        /// <remarks>This function will also return true if the string is null or whitespace</remarks>
         public static bool IsEmail(this string s)
         {
-            return s.IsMatch(@"^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}$");
+            return string.IsNullOrWhiteSpace(s) || s.IsMatch(@"^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}$");
         }
 
         /// <summary>

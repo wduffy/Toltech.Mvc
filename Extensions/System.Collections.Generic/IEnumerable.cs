@@ -6,6 +6,16 @@ namespace System.Collections.Generic
     {
 
         /// <summary>
+        /// Determines whether a sequence does not contain a specified element by using the default equality comparer.
+        /// </summary>
+        /// <returns>A boolean value indicating if the source does not contain an element</returns>
+        /// <remarks></remarks>
+        public static bool DoesNotContain<T>(this IEnumerable<T> source, T value)
+        {
+            return source == null ? true : !source.Contains(value);
+        }
+
+        /// <summary>
         /// Checks if the source contains an element that matches the query
         /// </summary>
         /// <returns>A boolean value indicating if the source contains an element that matched the query</returns>
