@@ -98,6 +98,7 @@
     <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\UploadImage.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extensions\System.Web.Mvc\AjaxOnlyAttribute.cs" />
     <Compile Include="Extensions\System.Web.Mvc\CheckValues.cs" />
     <Compile Include="Extensions\System.Web.Mvc\CsvResult.cs" />
     <Compile Include="Extensions\System.Web.Mvc\Flash.cs" />

@@ -89,6 +89,23 @@ namespace System
         }
 
         /// <summary>
+        /// Appends a supplied value to the beginning of the current string
+        /// </summary>
+        /// <param name="value">The value to be appended</param>
+        /// <returns>A <see cref="System.String" /> appended with the supplied value</returns>
+        /// <remarks></remarks>
+        public static string Append(this string s, string value, bool ignoreIfAlreadyAppended = true)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return s;
+
+            if (ignoreIfAlreadyAppended && s.StartsWith(value, StringComparison.OrdinalIgnoreCase))
+                return s;
+
+            return string.Concat(value, s);
+        }
+
+        /// <summary>
         /// Returns a guaranteed friendly path from the current string
         /// </summary>
         /// <returns>A safe path string</returns>
