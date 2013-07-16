@@ -60,6 +60,7 @@
     <Compile Include="Extensions\System.IO\StreamExtensions.cs" />
     <Compile Include="Extensions\System.Linq.Expressions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\System.Linq\PagedListExtensions.cs" />
+    <Compile Include="Extensions\System.Linq\QueryableExtensions.cs" />
     <Compile Include="Extensions\System.Web.Mvc.Html\HtmlHelperExtensions\ActionLinkImage.cs">
       <SubType>Code</SubType>
     </Compile>

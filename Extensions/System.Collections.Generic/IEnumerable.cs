@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Web.Mvc;
 
 namespace System.Collections.Generic
 {
@@ -75,6 +76,15 @@ namespace System.Collections.Generic
             source.ForEach(x => result.Add(something(x)));
 
             return result;
+        }
+
+        public static IEnumerable<SelectListItem> AsSelectList<T>(this IEnumerable<T> source, Func<T, string> text, Func<T, object> value)
+        {
+            return source.AsEnumerable().Select(x => new SelectListItem
+            {
+                Text = text.Invoke(x),
+                Value = value.Invoke(x).ToString()
+            });
         }
 
     }

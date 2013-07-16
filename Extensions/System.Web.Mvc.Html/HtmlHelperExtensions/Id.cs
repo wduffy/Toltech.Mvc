@@ -8,17 +8,17 @@ namespace System.Web.Mvc.Html
 {
     public static partial class HtmlHelperExtensions
     {
-        public static string IdFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression)
-        {
-            //if (expression.Body.NodeType == ExpressionType.Call)
-            //{
-            //    var methodCallExpression = (MethodCallExpression)expression.Body;
-            //    string name = GetHtmlIdNameFor(methodCallExpression);
-            //    return name.Substring(expression.Parameters[0].Name.Length + 1).Replace('.', '_');
-            //}
+        //public static string IdFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression)
+        //{
+        //    //if (expression.Body.NodeType == ExpressionType.Call)
+        //    //{
+        //    //    var methodCallExpression = (MethodCallExpression)expression.Body;
+        //    //    string name = GetHtmlIdNameFor(methodCallExpression);
+        //    //    return name.Substring(expression.Parameters[0].Name.Length + 1).Replace('.', '_');
+        //    //}
             
-            return expression.Body.ToString().Substring(expression.Parameters[0].Name.Length + 1).Replace('.', '_');
-        }
+        //    return expression.Body.ToString().Substring(expression.Parameters[0].Name.Length + 1).Replace('.', '_');
+        //}
 
         //public static string HtmlIdNameFor<TModel, TValue>(
         //    this HtmlHelper<TModel> htmlHelper,

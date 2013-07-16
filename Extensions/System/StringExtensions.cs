@@ -1,6 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace System
 {
@@ -48,13 +49,13 @@ namespace System
         }
 
         /// <summary>
-        /// Assesses the current string and returns its value with all HTML markup removed
+        /// Assesses the current string and returns its value with all new lines replaced with html line breaks
         /// </summary>
-        /// <returns>A string that is guaranteed to have no HTML markup</returns>
+        /// <returns>A string that has newlines represented as HTML &lt;br /&gt; tags</returns>
         /// <remarks></remarks>
-        public static string NlToBr(this string s)
+        public static MvcHtmlString NlToBr(this string s)
         {
-            return s.Replace(Environment.NewLine, "<br />");
+            return new MvcHtmlString(s.Replace(Environment.NewLine, "<br />"));
         }
 
         /// <summary>
