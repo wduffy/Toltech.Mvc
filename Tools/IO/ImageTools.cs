@@ -123,7 +123,7 @@ namespace Toltech.Mvc.Tools
         {
             MemoryStream output = new MemoryStream();
             
-            Bitmap canvas = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+            Bitmap canvas = new Bitmap(width, height, PixelFormat.Format32bppArgb);
             Graphics artist = Graphics.FromImage(canvas);
             artist.Clear(color);
             artist.Dispose();
@@ -131,32 +131,32 @@ namespace Toltech.Mvc.Tools
             EncoderParameters pars = new EncoderParameters(1);
             pars.Param[0] = new EncoderParameter(Encoder.Quality, 1L);
 
-            canvas.Save(output, GetCodecInfo("address/jpeg"), pars);
+            canvas.Save(output, GetCodecInfo("address/png"), pars);
             canvas.Dispose();
 
             return output;
         }
 
-        public static MemoryStream ResizeImage(string filePath, int width) { return ResizeImage(filePath, width, int.MinValue, 100L, true); }
-        public static MemoryStream ResizeImage(string filePath, int width, int height) { return ResizeImage(filePath, width, height, 100L, true); }
-        public static MemoryStream ResizeImage(string filePath, int width, int height, long quality) { return ResizeImage(filePath, width, height, quality, true); }
-        public static MemoryStream ResizeImage(string filePath, int width, int height, long quality, bool flip)
+        public static MemoryStream ResizeImage(string filePath, int width, string extension) { return ResizeImage(filePath, width, int.MinValue, 100L, true, extension); }
+        public static MemoryStream ResizeImage(string filePath, int width, int height, string extension) { return ResizeImage(filePath, width, height, 100L, true, extension); }
+        public static MemoryStream ResizeImage(string filePath, int width, int height, long quality, string extension) { return ResizeImage(filePath, width, height, quality, true, extension); }
+        public static MemoryStream ResizeImage(string filePath, int width, int height, long quality, bool flip, string extension)
         {
             using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-                return ResizeImage(fs, width, height, quality, flip);
+                return ResizeImage(fs, width, height, quality, flip, extension);
         }
 
-        public static MemoryStream ResizeImage(Stream imageStream, int width) { return ResizeImage(imageStream, width, int.MinValue, 100L, true); }
-        public static MemoryStream ResizeImage(Stream imageStream, int width, int height) { return ResizeImage(imageStream, width, height, 100L, true); }
-        public static MemoryStream ResizeImage(Stream imageStream, int width, int height, long quality) { return ResizeImage(imageStream, width, height, quality, true); }
-        public static MemoryStream ResizeImage(Stream imageStream, int width, int height, long quality, bool flip)
+        public static MemoryStream ResizeImage(Stream imageStream, int width, string extension) { return ResizeImage(imageStream, width, int.MinValue, 100L, true, extension); }
+        public static MemoryStream ResizeImage(Stream imageStream, int width, int height, string extension) { return ResizeImage(imageStream, width, height, 100L, true, extension); }
+        public static MemoryStream ResizeImage(Stream imageStream, int width, int height, long quality, string extension) { return ResizeImage(imageStream, width, height, quality, true, extension); }
+        public static MemoryStream ResizeImage(Stream imageStream, int width, int height, long quality, bool flip, string extension)
         {
             MemoryStream output = new MemoryStream();
             Image origional = Image.FromStream(imageStream);
 
             CalculateDimensions(origional, ref width, ref height, flip);
 
-            Bitmap canvas = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+            Bitmap canvas = new Bitmap(width, height, PixelFormat.Format32bppArgb);
 
             // Create the base canvas and redraw the origional address
             Graphics artist = Graphics.FromImage(canvas);
@@ -171,7 +171,7 @@ namespace Toltech.Mvc.Tools
             EncoderParameters pars = new EncoderParameters(1);
             pars.Param[0] = new EncoderParameter(Encoder.Quality, quality);
 
-            canvas.Save(output, GetCodecInfo("address/jpeg"), pars);
+            canvas.Save(output, GetCodecInfo("image/" + extension), pars);
 
             canvas.Dispose();
             origional.Dispose();

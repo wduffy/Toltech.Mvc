@@ -108,6 +108,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Extensions\System\SortOrderEnum.cs" />
+    <Compile Include="Http\Handlers\ImageHandler.cs" />
     <Compile Include="Tools\AutoMapper\IAutoMapperRegistrationResolver.cs" />
     <Compile Include="Tools\AutoMapper\IAutoMapperRegistrar.cs" />
     <Compile Include="Tools\AutoMapper\AutoMapperRegistration.cs" />
