@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System;
 
 namespace Toltech.Mvc.Tools
 {
@@ -8,7 +9,20 @@ namespace Toltech.Mvc.Tools
     {
 
         /// <summary>
-        /// Encrypts input string using Rijndael (AES) algorithm with CBC blocking and PKCS7 padding.
+        /// Hashes the string using SHA256. SHA allows only one way encrpytion.
+        /// </summary>
+        /// <param name="input">Text string to encrypt</param>
+        /// <param name="salt">Salt to shake on the text being encrypted</param>
+        /// <returns>Encrypted text as a string</returns>
+        public static string ShaHash(string input, string salt)
+        {
+            var bytes = new UnicodeEncoding().GetBytes(salt + input + salt);            
+            var hash = new SHA256Managed().ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
+        }
+
+        /// <summary>
+        /// Encrypts input string using Rijndael (AES) algorithm with CBC blocking and PKCS7 padding. AES allows both encryption and decryption.
         /// </summary>
         /// <param name="input">text string to encrypt </param>
         /// <returns>Encrypted text in Byte array</returns>
@@ -48,7 +62,7 @@ namespace Toltech.Mvc.Tools
         }
 
         /// <summary>
-        /// Decrypts input string from Rijndael (AES) algorithm with CBC blocking and PKCS7 padding.
+        /// Decrypts input string from Rijndael (AES) algorithm with CBC blocking and PKCS7 padding. AES allows both encryption and decryption.
         /// </summary>
         /// <param name="input">Encrypted binary array to decrypt</param>
         /// <returns>string of Decrypted data</returns>

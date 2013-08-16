@@ -32,6 +32,16 @@ namespace System
         }
 
         ///<summary>
+        ///Returns the end of day datestamp represented by this instance
+        ///</summary>
+        ///<returns></returns>
+        ///<remarks></remarks>
+        public static DateTime EndOfDay(this DateTime datetime)
+        {
+            return datetime.Date.AddSeconds(86399);
+        }
+
+        ///<summary>
         ///Returns the ordinal suffix for the day of the month represented by this instance
         ///</summary>
         ///<returns></returns>
